@@ -2,9 +2,9 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-def view_some_images(row_list, num, colormode='c'):
+def view_some_images(row_list, num, df='img_arr', colormode='c'):
     loaded = np.load('../image_array.npz')
-    if colormode = 'c':
+    if colormode == 'c':
         img_arr = loaded['a']
     else:
         img_arr = loaded['b']
@@ -20,6 +20,9 @@ def view_some_images(row_list, num, colormode='c'):
 
     fig, axs = plt.subplots(*num, figsize=(wd, ht))
     for i, ax in enumerate(axs.flatten()):
-        ax.imshow( img_arr[sample[i]].reshape(80,60,3)/255 )
+        ax.imshow( df[sample[i]].reshape(80,60,3)/255 )
         ax.set_xticks([])
         ax.set_yticks([])
+
+def view_these_images(row_list, num, df='img_arr', colormode='c'):
+    
