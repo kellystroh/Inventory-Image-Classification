@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 def view_some_images(row_list, num, colormode='c'):
     loaded = np.load('../image_array.npz')
-    if colormode = 'c':
+    if colormode == 'c':
         img_arr = loaded['a']
     else:
         img_arr = loaded['b']
