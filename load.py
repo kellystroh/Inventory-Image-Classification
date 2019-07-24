@@ -31,7 +31,7 @@ for i, ix in enumerate( df.id ):
 all_img = np.stack(all_img)
 bw_float64 = all_img.reshape(-1, 80, 60, 3).mean(3).reshape(-1, 80*60)
 bw_img = bw_float64.astype('float16')
-np.savez_compressed('data/original_image_arr', a=all_img, b=bw_img)
+np.savez_compressed('data/original_image_arr.npz', a=all_img, b=bw_img)
 '''
 Warning will appear because we are 'losing info' by converting from float64 to 
 float16... the higher degree of precision is not needed. 
@@ -93,17 +93,17 @@ shuffle_final = shuffle[n_val:]
 
 y.to_csv('data/labels_df.csv', index=False)
 print('full df saved')
-# labels_train.to_csv('data/train_labels.csv', index=False)
-# print('train df saved')
-# labels_test.to_csv('data/test_labels.csv', index=False)
-# print('test df saved')
-# labels_test.to_csv('data/final_labels.csv', index=False)
-# print('final df saved')
+labels_train.to_csv('data/train_labels.csv', index=False)
+print('train df saved')
+labels_test.to_csv('data/test_labels.csv', index=False)
+print('test df saved')
+labels_test.to_csv('data/final_labels.csv', index=False)
+print('final df saved')
 
 
-# np.savez_compressed('data/shuffle_arrays', a=shuffle_train, b=shuffle_test, c=shuffle_final)
-# print('full array saved')
-# np.savez_compressed('data/color_images', a=images_train_color, b=images_test_color, c=images_final_color)
-# print('color array saved')
-# np.savez_compressed('data/bw_images', a=images_train_bw, b=images_test_bw, c=images_final_bw)
-# print('bw array saved')
+np.savez_compressed('data/shuffle_arrays.npz', a=shuffle_train, b=shuffle_test, c=shuffle_final)
+print('full array saved')
+np.savez_compressed('data/color_images.npz', a=images_train_color, b=images_test_color, c=images_final_color)
+print('color array saved')
+np.savez_compressed('data/bw_images.npz', a=images_train_bw, b=images_test_bw, c=images_final_bw)
+print('bw array saved')
