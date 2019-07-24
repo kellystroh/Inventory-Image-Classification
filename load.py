@@ -64,46 +64,48 @@ all_img = np.delete(all_img, malo_idx, 0)
 print('df', df.shape)
 print('all', all_img.shape)
 print('bw', bw_img.shape)
-
-### test train split
-shuffle = np.random.choice( np.arange(len(bw_img)), size=len(bw_img), replace=False)
-print(shuffle.shape)
-X_bw = bw_img[shuffle]
-X_color = all_img[shuffle]
-y = df.iloc[shuffle,:]
-
-n_train = round(len(X_bw)*.70)
-n_val = round(len(X_bw)*.90)
-
-images_train_bw = X_bw[:n_train]
-images_train_color = X_color[:n_train]
-labels_train = y[:n_train]
-shuffle_train = shuffle[:n_train]
-
-images_test_bw = X_bw[n_train:n_val]
-images_test_color = X_color[n_train:n_val]
-labels_test = y[n_train:n_val]
-shuffle_test = shuffle[n_train:n_val]
-
-images_final_bw = X_bw[n_val:]
-images_final_color = X_color[n_val:]
-labels_final = y[n_val:]
-shuffle_final = shuffle[n_val:]
+np.savez_compressed('data/full_image_arr.npz', a=all_img, b=bw_img)
 
 
-y.to_csv('data/labels_df.csv', index=False)
-print('full df saved')
-labels_train.to_csv('data/train_labels.csv', index=False)
-print('train df saved')
-labels_test.to_csv('data/test_labels.csv', index=False)
-print('test df saved')
-labels_test.to_csv('data/final_labels.csv', index=False)
-print('final df saved')
+# ### test train split
+# shuffle = np.random.choice( np.arange(len(bw_img)), size=len(bw_img), replace=False)
+# print(shuffle.shape)
+# X_bw = bw_img[shuffle]
+# X_color = all_img[shuffle]
+# y = df.iloc[shuffle,:]
+
+# n_train = round(len(X_bw)*.70)
+# n_val = round(len(X_bw)*.90)
+
+# images_train_bw = X_bw[:n_train]
+# images_train_color = X_color[:n_train]
+# labels_train = y[:n_train]
+# shuffle_train = shuffle[:n_train]
+
+# images_test_bw = X_bw[n_train:n_val]
+# images_test_color = X_color[n_train:n_val]
+# labels_test = y[n_train:n_val]
+# shuffle_test = shuffle[n_train:n_val]
+
+# images_final_bw = X_bw[n_val:]
+# images_final_color = X_color[n_val:]
+# labels_final = y[n_val:]
+# shuffle_final = shuffle[n_val:]
 
 
-np.savez_compressed('data/shuffle_arrays.npz', a=shuffle_train, b=shuffle_test, c=shuffle_final)
-print('full array saved')
-np.savez_compressed('data/color_images.npz', a=images_train_color, b=images_test_color, c=images_final_color)
-print('color array saved')
-np.savez_compressed('data/bw_images.npz', a=images_train_bw, b=images_test_bw, c=images_final_bw)
-print('bw array saved')
+# y.to_csv('data/labels_df.csv', index=False)
+# print('full df saved')
+# labels_train.to_csv('data/train_labels.csv', index=False)
+# print('train df saved')
+# labels_test.to_csv('data/test_labels.csv', index=False)
+# print('test df saved')
+# labels_test.to_csv('data/final_labels.csv', index=False)
+# print('final df saved')
+
+
+# np.savez_compressed('data/shuffle_arrays.npz', a=shuffle_train, b=shuffle_test, c=shuffle_final)
+# print('full array saved')
+# np.savez_compressed('data/color_images.npz', a=images_train_color, b=images_test_color, c=images_final_color)
+# print('color array saved')
+# np.savez_compressed('data/bw_images.npz', a=images_train_bw, b=images_test_bw, c=images_final_bw)
+# print('bw array saved')
