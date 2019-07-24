@@ -89,8 +89,8 @@ images_final_color = X_color[n_val:]
 labels_final = y[n_val:]
 shuffle_final = shuffle[n_val:]
 
-np.save('data/labels_arr.npy', y)
-#y.to_csv('data/labels_df.csv', index=False)
+
+y.to_csv('data/labels_df.csv', index=False)
 print('full df saved')
 labels_train.to_csv('data/train_labels.csv', index=False)
 print('train df saved')
