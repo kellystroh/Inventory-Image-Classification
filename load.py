@@ -61,7 +61,9 @@ print('df', df.shape)
 print('all', all_img.shape)
 print('bw', bw_img.shape)
 np.savez_compressed('data/full_image_arr.npz', a=all_img, b=bw_img)
-
+print('full arr saved')
+df.to_csv('data/full_labels_df.csv', index=False)
+print('full df saved')
 
 ### test train split
 shuffle = np.random.choice( np.arange(len(bw_img)), size=len(bw_img), replace=False)
@@ -93,9 +95,6 @@ shuffle_final = shuffle[n_val:]
 y[y.subCategory==socks]
 '''
 
-
-y.to_csv('data/labels_df.csv', index=False)
-print('full df saved')
 labels_train.to_csv('data/train_labels.csv', index=False)
 print('train df saved')
 labels_test.to_csv('data/test_labels.csv', index=False)
@@ -104,7 +103,7 @@ labels_test.to_csv('data/final_labels.csv', index=False)
 print('final df saved')
 
 
-np.savez_compressed('data/shuffle_arrays.npz', a=shuffle_train, b=shuffle_test, c=shuffle_final)
+np.savez_compressed('data/shuffle_arrays.npz', a=shuffle_train, b=shuffle_test, c=shuffle_final, d=shuffle)
 print('full array saved')
 np.savez_compressed('data/color_images.npz', a=images_train_color, b=images_test_color, c=images_final_color)
 print('color array saved')
