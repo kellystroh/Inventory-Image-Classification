@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df= pd.read_csv('data/full_labels_df.csv')
+df= pd.read_csv('data/labels_df.csv')
 loaded2 = np.load('data/full_image_arr.npz')
 image_arr = loaded2['b']
 image_arr = image_arr/255
