@@ -122,12 +122,15 @@
                   <h2 class="section-title mb-3">Update your Collection</h2>
                 </div>
               </div>
-                  <form action = "http://localhost:8087/uploader" method = "POST" 
+                  <!-- <form action = "http://localhost:8087/uploader" method = "POST" 
                   enctype = "multipart/form-data">
                   <input type = "file" name = "file" />
                   <input type = "submit"/>
+                  </form> -->
+                  <form method="POST" enctype="multipart/form-data" action="/uploader">
+                    <input type="file" name="file[]" multiple="">
+                    <input type="submit" value="add">
                   </form>
-      
       
               </div>
             </div>

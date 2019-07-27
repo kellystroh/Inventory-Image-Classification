@@ -26,12 +26,18 @@ def login():
 @app.route('/account', methods=['GET'])
 def upload_file():
     return render_template('account.html')
+# @app.route('/uploader', methods = ['GET', 'POST'])
+# def uploader():
+#    if request.method == 'POST':
+#       f = request.files['file']
+#       f.save(os.path.join(app.config['upload_folder'], secure_filename(f.filename)))
+#       return render_template('account.html')
 @app.route('/uploader', methods = ['GET', 'POST'])
 def uploader():
-   if request.method == 'POST':
-      f = request.files['file']
-      f.save(os.path.join(app.config['upload_folder'], secure_filename(f.filename)))
-      return render_template('account.html')
+    uploaded_files = request.files.getlist("file[]")
+    for f in uploaded_files:
+        f.save(os.path.join(app.config['upload_folder'], secure_filename(f.filename)))
+    return render_template('account.html')
 		
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8087, debug=True)
