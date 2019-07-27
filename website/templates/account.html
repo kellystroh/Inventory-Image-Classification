@@ -70,51 +70,31 @@
 
   
      
-    <div class="site-blocks-cover overlay" style="background-image: url(static/images/1pic.jpg);" data-aos="fade" id="home-section">
+    <div class="site-blocks-cover overlay" style="background-image: url(static/images/9pic.jpg);" data-aos="fade" id="home-section">
       <div class="container">
         <div class="row align-items-center justify-content-center">
 
           
-              <div class="col-md-6 mt-lg-5 text-center">
-                <h1>Pixel Perfect</h1>
-                <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam assumenda ea quo cupiditate facere deleniti fuga officia.</p>
-                <div>
-                  <a href="#" class="btn btn-primary mr-2 mb-2">Get Started</a>
-                </div>
+              <div class="col-md-9 mt-lg-5 text-center">
+                <h1><br><br><br><br><br><br><br><br><br><br><br><br>Welcome to your Cloud Closet</h1>
+
               </div>
             
         </div>
       </div>
     </div>  
 
-    
-    <div class="site-section cta-big-image" id="about-section">
-      <div class="container">
-        
-        <img src="static/images/10pic.jpg" alt="Image" class="img-fluid">
-        <div class="img-box">
-          <span class="sub-title">Creative Skills</span>
-          <h2>Create Your Own Web Masterpiece</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis eveniet, voluptatem harum provident iusto modi explicabo! Aperiam velit reiciendis, eius impedit ea necessitatibus facilis nobis ipsum, architecto cum, doloribus nesciunt.</p>
-          <p><a href="#" class="btn btn-outline-dark">Read More</a></p>
-        </div>
-      </div>  
-    </div>
 
-    
-   
-
-
-    <section class="site-section">
+    <section class="site-section" id="inventory-section">
       <div class="container">
         
         <div class="row">
           <div class="col-lg-6">
 
             <div class="owl-carousel slide-one-item-alt">
-              <img src="static/images/slide_1.jpg" alt="Image" class="img-fluid">
-              <img src="static/images/slide_2.jpg" alt="Image" class="img-fluid">
-              <img src="static/images/slide_3.jpg" alt="Image" class="img-fluid">
+              <img src="static/images/8pic.jpg" alt="Image" class="img-fluid">
+              <img src="static/images/7pic.jpg" alt="Image" class="img-fluid">
+              <img src="static/images/4pic.jpg" alt="Image" class="img-fluid">
               <img src="static/images/slide_4.jpg" alt="Image" class="img-fluid">
             </div>
             <div class="custom-direction">
@@ -124,16 +104,35 @@
           </div>
           <div class="col-lg-5 ml-auto">
             
-            <h2 class="section-title mb-3">We Are The Best Consulting Agency</h2>
+            <h2 class="section-title mb-3">Your Current Inventory</h2>
                 <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                 <p>Est qui eos quasi ratione nostrum excepturi id recusandae fugit omnis ullam pariatur itaque nisi voluptas impedit  Quo suscipit omnis iste velit maxime.</p>
 
-                <p><a href="#" class="btn btn-primary mr-2 mb-2">Learn More</a></p>
+                <p><a href="#upload-section" class="btn btn-primary mr-2 mb-2">Add More Items</a></p>
             
           </div>
         </div>
       </div>
     </section>
+
+    <section class="site-section border-bottom bg-light" id="upload-section">
+            <div class="container">
+              <div class="row mb-5">
+                <div class="col-12 text-center">
+                  <h2 class="section-title mb-3">Update your Collection</h2>
+                </div>
+              </div>
+                  <form action = "http://localhost:8087/uploader" method = "POST" 
+                  enctype = "multipart/form-data">
+                  <input type = "file" name = "file" />
+                  <input type = "submit"/>
+                  </form>
+      
+      
+              </div>
+            </div>
+    </section>
+
 
     <section class="site-section">
       <div class="container">
@@ -142,112 +141,35 @@
             <h2 class="section-title mb-3">Our Approach</h2>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-6 col-lg-4">
-            <div class=" box-with-humber">
-              <h2 class="text-black"><span class="text-primary">01.</span>Creative</h2>
-              <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et praesentium eos nulla qui commodi consectetur beatae fugiat. Veniam iste rerum perferendis.</p>
-              
+            <table border="1" cellpadding="10" cellspacing="0">
+                    <tr>
+                    <th>Month</th>
+                    <th>Rent</th>
+                    <th>Utilities</th>
+                    <th>Groceries</th>
+                    <th>Eating Out</th>
+                    <th>Entertainment</th>
+                    </tr>
+                    <tr>
+                    <td>August</td>
+                    <td>$1500</td>
+                    <td>$100</td><!-- $150 changed to $100-->
+                    <td>$350</td>
+                    <td>$100</td>
+                    <td>$50</td>
+                    </tr>
+            </table>
+            
             </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4">
-            <div class=" box-with-humber">
-              <h2 class="text-black"><span class="text-primary">02.</span>Strategy</h2>
-              <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et praesentium eos nulla qui commodi consectetur beatae fugiat. Veniam iste rerum perferendis.</p>
-              
             </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4">
-            <div class=" box-with-humber">
-              <h2 class="text-black"><span class="text-primary">03.</span>Production</h2>
-              <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et praesentium eos nulla qui commodi consectetur beatae fugiat. Veniam iste rerum perferendis.</p>
-              
-            </div>
-          </div>
         </div>
-      </div>
-    </section>
+        </section>
 
 
 
     
 
-    <section class="site-section border-bottom bg-light" id="services-section">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-12 text-center">
-            <h2 class="section-title mb-3">Our Services</h2>
-          </div>
-        </div>
-        <div class="row align-items-stretch">
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up">
-            <div class="unit-4 d-flex">
-              <div class="unit-4-icon mr-4"><span class="text-primary icon-autorenew"></span></div>
-              <div>
-                <h3>Great Design</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                <p><a href="#">Learn More</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="unit-4 d-flex">
-              <div class="unit-4-icon mr-4"><span class="text-primary icon-backspace"></span></div>
-              <div>
-                <h3>Time Saving</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                <p><a href="#">Learn More</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="unit-4 d-flex">
-              <div class="unit-4-icon mr-4"><span class="text-primary icon-av_timer"></span></div>
-              <div>
-                <h3>Quick Response</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                <p><a href="#">Learn More</a></p>
-              </div>
-            </div>
-          </div>
 
-
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="300">
-            <div class="unit-4 d-flex">
-              <div class="unit-4-icon mr-4"><span class="text-primary icon-beenhere"></span></div>
-              <div>
-                <h3>Best Support</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                <p><a href="#">Learn More</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="400">
-            <div class="unit-4 d-flex">
-              <div class="unit-4-icon mr-4"><span class="text-primary icon-business_center"></span></div>
-              <div>
-                <h3>Finest Quality</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                <p><a href="#">Learn More</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="500">
-            <div class="unit-4 d-flex">
-              <div class="unit-4-icon mr-4"><span class="text-primary icon-cloud_done"></span></div>
-              <div>
-                <h3>Real Solutions</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                <p><a href="#">Learn More</a></p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
 
     
     <footer class="site-footer">
@@ -330,4 +252,87 @@
   <script src="static/js/main.js"></script>
     
   </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Your Closet</title>
+    </head>
+    <body>
+        <h1>Welcome to your account</h1>
+        <h2>Upload your inventory</h2>
+        <form action = "http://localhost:8087/uploader" method = "POST" 
+        enctype = "multipart/form-data">
+        <input type = "file" name = "file" />
+        <input type = "submit"/>
+        </form>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Nullam facilisis arcu vel mollis finibus. Nunc facilisis 
+            vel nisl lacinia cursus. Cras suscipit augue sed volutpat 
+            tincidunt. Aenean dictum tincidunt urna, quis eleifend 
+            quam mattis eu. Integer sollicitudin, nisl faucibus aliquam 
+            ullamcorper, metus sapien scelerisque lorem, at ornare dui 
+            orci non orci. Integer tempus consectetur metus, vitae 
+            blandit nibh aliquam nec. Pellentesque vestibulum arcu eget 
+            ante sollicitudin, id accumsan dui molestie. Suspendisse 
+            vehicula semper dui id congue. Suspendisse sed velit sit 
+            amet velit luctus varius. Ut condimentum tincidunt consequat. 
+            Sed eu ligula non magna scelerisque auctor.
+        </p>
+             
+        <p>
+            Maecenas feugiat iaculis imperdiet. Duis vitae pellentesque 
+            nunc, eget elementum metus. Nulla sollicitudin bibendum nibh, 
+            sit amet semper tortor. Nunc rhoncus non arcu in scelerisque. 
+            Donec magna mauris, congue ac dignissim rutrum, tincidunt 
+            quis leo. Maecenas dictum orci in magna iaculis, in elementum 
+            felis viverra. Aenean sit amet sapien odio. Donec molestie 
+            est et nisl mattis dictum. Nullam at nibh aliquet, tincidunt 
+            lorem et, facilisis enim. Praesent id felis sit amet quam 
+            dignissim volutpat. Nam nec cursus mi, quis tincidunt justo.
+        </p>
+        <table border="1" cellpadding="10" cellspacing="0">
+                <tr>
+                   <th>Month</th>
+                   <th>Rent</th>
+                   <th>Utilities</th>
+                   <th>Groceries</th>
+                   <th>Eating Out</th>
+                   <th>Entertainment</th>
+                </tr>
+                <tr>
+                   <td>August</td>
+                   <td>$1500</td>
+                   <td>$100</td><!-- $150 changed to $100-->
+                   <td>$350</td>
+                   <td>$100</td>
+                   <td>$50</td>
+                </tr>
+        </table>
+        <ul>
+            <li>apples</li>
+            <li>oranges</li>
+            <li>pineapples</li>
+            <li>mangoes</li>
+            <li>dragonfruit</li>
+        </ul>
+    </body>
 </html>
