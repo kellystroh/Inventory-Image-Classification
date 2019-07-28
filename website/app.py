@@ -1,6 +1,9 @@
 from werkzeug import secure_filename
 from flask import Flask, request, render_template
 import os, os.path
+from config import Config
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 
@@ -40,7 +43,9 @@ def uploader():
     return render_template('account.html')
 		
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8087, debug=True)
+    app.run(host='0.0.0.0', port=8800, debug=True)
+
+
 
 
 '''
