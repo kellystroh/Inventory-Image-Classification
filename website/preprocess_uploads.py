@@ -7,7 +7,7 @@ def process_images(directory):
     pic_list = [f for f in listdir(directory) if f.endswith('.png')]
 
     for pic in pic_list:
-        fn = r'image_uploads/{}'.format(pic)
+        fn = r'{}/{}'.format(directory, pic)
         img = io.imread(fn)
         img = transform.rescale(img, 3.0 / 4.0, anti_aliasing=False)
         if img.shape[2]==4:
