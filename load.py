@@ -8,6 +8,8 @@ from zipfile import ZipFile
 np.random.seed(33)
 
 df = pd.read_csv('data/styles.csv', error_bad_lines=False)
+socks= list(df[df.subCategory=='Socks'].index)
+df.iloc[socks, 2] = 'Apparel'
 
 all_img = []
 for i, ix in enumerate( df.id ):
@@ -91,9 +93,13 @@ labels_final = y[n_val:]
 shuffle_final = shuffle[n_val:]
 
 
-'''
-y[y.subCategory==socks]
-'''
+
+# ## label all socks as apparel
+# socks_as_accessories_idx = list(labels_train[(labels_train.subCategory=='Socks')&(labels_train.masterCategory=='Accessories')].index)
+# labels_train.iloc[socks_as_accessories_idx, 2] = 'Apparel'
+# socks_as_accessories_idx_test = list(labels_test[(labels_test.subCategory=='Socks')&(labels_test.masterCategory=='Accessories')].index)
+# labels_test.iloc[socks_as_accessories_idx_test, 2] = 'Apparel'
+
 
 labels_train.to_csv('data/train_labels.csv', index=False)
 print('train df saved')
