@@ -11,9 +11,31 @@ df = pd.read_csv('data/styles.csv', error_bad_lines=False)
 socks= list(df[df.subCategory=='Socks'].index)
 df.iloc[socks, 2] = 'Apparel'
 
+# make all of subCat-perfume within mastCat-PC and with subCat = Fragrance
 perfumes= list(df[df.subCategory=='Perfumes'].index)
 df.iloc[perfumes, 2] = 'Personal Care'
 df.iloc[perfumes, 3] = 'Fragrance'
+
+# make all of subCat-eyes to subCat-makeup
+eyes = list(df[df.subCategory=='Eyes'].index)
+df.iloc[eyes,3] = 'Makeup'
+
+# if article type is flip flop, subcat is flip flop
+flops = list(df[df.articleType=='Flip Flops'].index)
+df.iloc[eyes,3] = 'Flip Flops'
+
+# if article type is sandals, subcat is sandals
+sandals = (df[df.articleType=='Sandals'].index)
+df.iloc[eyes,3] = 'Sandals'
+
+def filter_article(mast_cat, line):
+    items = df[df.masterCategory==mast_cat].groupby(['subCategory','articleType']).count().id
+    num_drop = len(items[items < line])
+    drop_list = []
+    for i in range(num_drop):
+        c = items[items < line].index[i][1]
+        drop_list.append(c)
+    return drop_list
 
 all_img = []
 for i, ix in enumerate( df.id ):
@@ -60,7 +82,7 @@ malo_idx = list(df[df.masterCategory.isin(malo_category)].index)
 print(len(malo_idx))
 malo_df = df[df.masterCategory.isin(malo_category)]
 print(malo_df.shape)
-df = df[~df.masterCategory.isin(malo_category)]
+df = df[~df.masterCategory.isin(malo_category)].reset_index(drop=True)
 bw_img = np.delete(bw_img, malo_idx, 0)
 all_img = np.delete(all_img, malo_idx, 0)
 
@@ -69,9 +91,24 @@ short_list = ['Accessories', 'Scarves', 'Apparel Set', 'Cufflinks', 'Stoles', 'S
               'Skin','Mufflers', 'Shoe Accessories', 'Hair', 'Gloves', 'Bath and Body',
               'Water Bottle', 'Umbrellas', 'Beauty Accessories', 'Sports Accessories']
 short_idx = list(df[df.subCategory.isin(short_list)].index)
-df = df[~df.masterCategory.isin(short_list)]
+print('filter sub-categories with n < 150, # rows removed: ', len(short_idx))
+print('# sub-cats removed: ', len(short_list))
+df = df[~df.subCategory.isin(short_list)].reset_index(drop=True)
 bw_img = np.delete(bw_img, short_idx, 0)
 all_img = np.delete(all_img, short_idx, 0)
+
+### remove article-types with n < 30
+app_drop_list = filter_article('Apparel', 30)
+acc_drop_list = filter_article('Accessories', 30)
+pc_drop_list = filter_article('Personal Care', 30)
+drop_list = app_drop_list + acc_drop_list + pc_drop_list
+drop_idx = list(df[df.articleType.isin(drop_list)].index)
+print('filter article-types with n < 30; # row removed: ',len(drop_idx))
+print('# article-types removed: ', len(drop_list))
+df = df[~df.articleType.isin(drop_list)]
+bw_img = np.delete(bw_img, drop_idx, 0)
+all_img = np.delete(all_img, drop_idx, 0)
+
 
 print('df', df.shape)
 print('all', all_img.shape)
