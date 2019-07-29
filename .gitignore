@@ -1,7 +1,7 @@
-.DS_Store
 models_pkl
+.DS_Store
+ref_material/fashion-mnist
 cap2_notebooks
-ref_material
 .ipynb_checkpoints
 data
 aws_notes.txt
