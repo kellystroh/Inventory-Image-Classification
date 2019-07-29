@@ -11,6 +11,10 @@ df = pd.read_csv('data/styles.csv', error_bad_lines=False)
 socks= list(df[df.subCategory=='Socks'].index)
 df.iloc[socks, 2] = 'Apparel'
 
+perfumes= list(df[df.subCategory=='Perfumes'].index)
+df.iloc[perfumes, 2] = 'Personal Care'
+df.iloc[perfumes, 3] = 'Fragrance'
+
 all_img = []
 for i, ix in enumerate( df.id ):
     if i%2000==0:

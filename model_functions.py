@@ -1,19 +1,21 @@
 import numpy as np
 import pandas as pd
 
-df_test = pd.read_csv('data/test_labels.csv')
-df_train = pd.read_csv('data/train_labels.csv')
-
 
 def pick_ylabels(column):
+    df_test = pd.read_csv('data/test_labels.csv')
+    df_train = pd.read_csv('data/train_labels.csv')
     y_train = df_train[column].copy().astype('category').cat.codes
     y_test = df_test[column].copy().astype('category').cat.codes
     return (y_train.values, y_test.values)
 def multi_index_counts(col, col2):
+    df_test = pd.read_csv('data/test_labels.csv')
     counts = df_test.groupby([col, col2]).count().id
     return counts
 
 def category_codes(column):
+    df_test = pd.read_csv('data/test_labels.csv')
+    df_train = pd.read_csv('data/train_labels.csv')
     _, ytest = pick_ylabels(column)
     cat_codes = {}
     cat_code_list = []
@@ -24,6 +26,8 @@ def category_codes(column):
     return cat_codes
 
 def test_counts_by_cat(column):
+    df_test = pd.read_csv('data/test_labels.csv')
+    df_train = pd.read_csv('data/train_labels.csv')
     _, ytest = pick_ylabels(column)
     test_counts_dict = {}
     test_counts = []
@@ -35,6 +39,8 @@ def test_counts_by_cat(column):
     return test_counts
 
 def train_counts_by_cat(column):
+    df_test = pd.read_csv('data/test_labels.csv')
+    df_train = pd.read_csv('data/train_labels.csv')
     y_train = pick_ylabels(column)
     train_counts_dict = {}
     train_counts = []
@@ -46,6 +52,8 @@ def train_counts_by_cat(column):
     return test_counts
 
 def class_weights(column):
+    df_test = pd.read_csv('data/test_labels.csv')
+    df_train = pd.read_csv('data/train_labels.csv')
     train_counts = train_counts_by_cat(column)
     counts_list = []
     ratio_list = []
