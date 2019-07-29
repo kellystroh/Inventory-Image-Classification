@@ -63,6 +63,16 @@ print(malo_df.shape)
 df = df[~df.masterCategory.isin(malo_category)]
 bw_img = np.delete(bw_img, malo_idx, 0)
 all_img = np.delete(all_img, malo_idx, 0)
+
+### remove sub-categories with n < 150
+short_list = ['Accessories', 'Scarves', 'Apparel Set', 'Cufflinks', 'Stoles', 'Skin Care', 
+              'Skin','Mufflers', 'Shoe Accessories', 'Hair', 'Gloves', 'Bath and Body',
+              'Water Bottle', 'Umbrellas', 'Beauty Accessories', 'Sports Accessories']
+short_idx = list(df[df.subCategory.isin(short_list)].index)
+df = df[~df.masterCategory.isin(short_list)]
+bw_img = np.delete(bw_img, short_idx, 0)
+all_img = np.delete(all_img, short_idx, 0)
+
 print('df', df.shape)
 print('all', all_img.shape)
 print('bw', bw_img.shape)
