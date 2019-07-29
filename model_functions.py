@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 
+df_test = pd.read_csv('data/test_labels.csv')
+df_train = pd.read_csv('data/train_labels.csv')
 
 
 def pick_ylabels(column):
