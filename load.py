@@ -171,8 +171,8 @@ X_bw = bw_img[shuffle]
 X_color = all_img[shuffle]
 y = df.iloc[shuffle,:]
 
-n_train = round(len(X_bw)*.70)
-n_val = round(len(X_bw)*.90)
+n_train = round(len(X_bw)*.79)
+n_val = round(len(X_bw)*.99)
 
 images_train_bw = X_bw[:n_train]
 images_train_color = X_color[:n_train]
@@ -184,10 +184,10 @@ images_test_color = X_color[n_train:n_val]
 labels_test = y[n_train:n_val]
 shuffle_test = shuffle[n_train:n_val]
 
-images_final_bw = X_bw[n_val:]
-images_final_color = X_color[n_val:]
-labels_final = y[n_val:]
-shuffle_final = shuffle[n_val:]
+extra_images_bw = X_bw[n_val:]
+extra_images_color = X_color[n_val:]
+extra_labels = y[n_val:]
+extra_shuffle = shuffle[n_val:]
 
 
 
@@ -195,13 +195,13 @@ labels_train.to_csv('data/train_labels.csv', index=False)
 print('train df saved')
 labels_test.to_csv('data/test_labels.csv', index=False)
 print('test df saved')
-labels_test.to_csv('data/final_labels.csv', index=False)
+extra_labels.to_csv('data/extra_labels.csv', index=False)
 print('final df saved')
 
 
-np.savez_compressed('data/shuffle_arrays.npz', a=shuffle_train, b=shuffle_test, c=shuffle_final, d=shuffle)
+np.savez_compressed('data/shuffle_arrays.npz', a=shuffle_train, b=shuffle_test, c=extra_shuffle, d=shuffle)
 print('full array saved')
-np.savez_compressed('data/color_images.npz', a=images_train_color, b=images_test_color, c=images_final_color)
+np.savez_compressed('data/color_images.npz', a=images_train_color, b=images_test_color, c=extra_images_color)
 print('color array saved')
-np.savez_compressed('data/bw_images.npz', a=images_train_bw, b=images_test_bw, c=images_final_bw)
+np.savez_compressed('data/bw_images.npz', a=images_train_bw, b=images_test_bw, c=extra_images_bw)
 print('bw array saved')
