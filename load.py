@@ -32,6 +32,9 @@ df.iloc[eyes,3] = 'Sandals'
 peach = (df[df.baseColour=='Peach'].index)
 df.iloc[peach, 5] = 'Orange'
 
+purple = list(df[df.baseColour == 'Lavender'].index)
+df.iloc[purple, 5] = 'Purple'
+
 cream = ['Beige', 'Off White']
 cream_idx = (df[df.baseColour.isin(cream)].index)
 df.iloc[cream_idx, 5] = 'Cream'
@@ -51,9 +54,6 @@ df.iloc[tan_idx, 5] = 'Tan'
 brown = ['Mushroom Brown', 'Coffee Brown', 'Mustard', 'Gold']
 brown_idx = list(df[df.baseColour.isin(brown)].index)
 df.iloc[brown_idx, 5] = 'Brown'
-
-purple = list(df[df.baseColour == 'Lavender'].index)
-df.iloc[purple, 5] = 'Purple'
 
 green = ['Lime Green', 'Olive']
 green_idx = list(df[df.baseColour.isin(green)].index)
@@ -189,13 +189,6 @@ images_final_color = X_color[n_val:]
 labels_final = y[n_val:]
 shuffle_final = shuffle[n_val:]
 
-
-
-# ## label all socks as apparel
-# socks_as_accessories_idx = list(labels_train[(labels_train.subCategory=='Socks')&(labels_train.masterCategory=='Accessories')].index)
-# labels_train.iloc[socks_as_accessories_idx, 2] = 'Apparel'
-# socks_as_accessories_idx_test = list(labels_test[(labels_test.subCategory=='Socks')&(labels_test.masterCategory=='Accessories')].index)
-# labels_test.iloc[socks_as_accessories_idx_test, 2] = 'Apparel'
 
 
 labels_train.to_csv('data/train_labels.csv', index=False)
