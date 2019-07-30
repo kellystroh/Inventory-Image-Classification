@@ -22,19 +22,10 @@ def home():
 def login():
     return render_template('login.html')
 
-# @app.route('/account', methods=['GET'])
-# def account():
-#     return render_template('account.html')
-
 @app.route('/account', methods=['GET'])
 def upload_file():
     return render_template('account.html')
-# @app.route('/uploader', methods = ['GET', 'POST'])
-# def uploader():
-#    if request.method == 'POST':
-#       f = request.files['file']
-#       f.save(os.path.join(app.config['upload_folder'], secure_filename(f.filename)))
-#       return render_template('account.html')
+
 @app.route('/uploader', methods = ['GET', 'POST'])
 def uploader():
     uploaded_files = request.files.getlist("file[]")
@@ -51,27 +42,12 @@ if __name__ == '__main__':
 
 '''
 photo creds: 
-#7
-Photo by Artem Beliaikin on Unsplash
-
-girl in closet #2
-Photo by Becca McHaffie on Unsplashmv 
-
-hanging clothes
-Photo by Priscilla Du Preez on Unsplash
-
-chair #4
-Photo by Sarah Dorweiler on Unsplash
-
-hats #8 
-Photo by David Vilches on Unsplash
-
-door #9
-Photo by Artem Beliaikin on Unsplash
-
-#10
-Photo by Ashim D’Silva on Unsplash
-
-# 11
-Photo by Lauren Fleischmann on Unsplash
+#7 Photo by Artem Beliaikin on Unsplash
+girl in closet #2 Photo by Becca McHaffie on Unsplashmv 
+hanging clothes Photo by Priscilla Du Preez on Unsplash
+chair #4 Photo by Sarah Dorweiler on Unsplash
+hats #8 Photo by David Vilches on Unsplash
+door #9 Photo by Artem Beliaikin on Unsplash
+#10 Photo by Ashim D’Silva on Unsplash
+# 11 Photo by Lauren Fleischmann on Unsplash
 '''

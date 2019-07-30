@@ -28,6 +28,46 @@ df.iloc[eyes,3] = 'Flip Flops'
 sandals = (df[df.articleType=='Sandals'].index)
 df.iloc[eyes,3] = 'Sandals'
 
+# combine similar colors
+peach = (df[df.baseColour=='Peach'].index)
+df.iloc[peach, 5] = 'Orange'
+
+cream = ['Beige', 'Off White']
+cream_idx = (df[df.baseColour.isin(cream)].index)
+df.iloc[cream_idx, 5] = 'Cream'
+
+red = ['Rust', 'Burgundy', 'Maroon', 'Magenta']
+red_idx = list(df[df.baseColour.isin(red)].index)
+df.iloc[red_idx, 5] = 'Red'
+
+pink = ['Mauve', 'Rose']
+pink_idx = list(df[df.baseColour.isin(pink)].index)
+df.iloc[pink_idx, 5] = 'Pink'
+
+tan = ['Nude', 'Skin', 'Taupe', 'Khaki']
+tan_idx = list(df[df.baseColour.isin(tan)].index)
+df.iloc[tan_idx, 5] = 'Tan'
+
+brown = ['Mushroom Brown', 'Coffee Brown', 'Mustard', 'Gold']
+brown_idx = list(df[df.baseColour.isin(brown)].index)
+df.iloc[brown_idx, 5] = 'Brown'
+
+purple = list(df[df.baseColour == 'Lavender'].index)
+df.iloc[purple, 5] = 'Purple'
+
+green = ['Lime Green', 'Olive']
+green_idx = list(df[df.baseColour.isin(green)].index)
+df.iloc[green_idx, 5] = 'Green'
+
+blue = ['Turquoise Blue', 'Teal', 'Sea Green']
+blue_idx = list(df[df.baseColour.isin(blue)].index)
+df.iloc[blue_idx, 5] = 'Blue'
+
+grey = ['Charcoal', 'Grey Melange', 'Silver']
+grey_idx = list(df[df.baseColour.isin(grey)].index)
+df.iloc[grey_idx, 5] = 'Grey'
+
+
 def filter_article(mast_cat, line):
     items = df[df.masterCategory==mast_cat].groupby(['subCategory','articleType']).count().id
     num_drop = len(items[items < line])
@@ -105,10 +145,16 @@ drop_list = app_drop_list + acc_drop_list + pc_drop_list
 drop_idx = list(df[df.articleType.isin(drop_list)].index)
 print('filter article-types with n < 30; # row removed: ',len(drop_idx))
 print('# article-types removed: ', len(drop_list))
-df = df[~df.articleType.isin(drop_list)]
+df = df[~df.articleType.isin(drop_list)].reset_index(drop=True)
 bw_img = np.delete(bw_img, drop_idx, 0)
 all_img = np.delete(all_img, drop_idx, 0)
 
+### remove childrens categories 
+kid_list = ['Girls', 'Boys']
+kid_idx = (df[df.gender.isin(kid_list)].index)
+df = df[~df.gender.isin(kid_list)]
+bw_img = np.delete(bw_img, kid_idx, 0)
+all_img = np.delete(all_img, kid_idx, 0)
 
 print('df', df.shape)
 print('all', all_img.shape)
