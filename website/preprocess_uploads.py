@@ -1,6 +1,6 @@
 def process_images(directory):
     from PIL import Image
-    from skimage import transform,io
+    from skimage import transform,io, color
     from os import listdir
     import numpy as np
     upload_array = []
@@ -11,14 +11,16 @@ def process_images(directory):
         img = io.imread(fn)
         img = transform.rescale(img, 3.0 / 4.0, anti_aliasing=False)
         if img.shape[2]==4:
-            img = rgba2rgb(img)
+            img = color.rgba2rgb(img)
             
         img_new = transform.resize(img, (80,60,3))
         upload_array.append(img_new.ravel())
 
     all_uploads = np.stack(upload_array)
-    bw_uploads = all_uploads.reshape(-1, 80, 60, 3).mean(3).reshape(-1, 80*60).astype('float16')   
-    return (all_uploads, bw_uploads)
+    bw_uploads = all_uploads.reshape(-1, 80, 60, 3).mean(3).reshape(-1, 80*60).astype('float16') 
+    #all_uploads = all_uploads.reshape(-1,80,60,3)
+    bw_uploads = bw_uploads.reshape(-1,80,60,1)
+    return bw_uploads
 
 # fig, axs = plt.subplots(1,3, figsize=(16,16))
 # for i, ax in enumerate(axs.flatten()):

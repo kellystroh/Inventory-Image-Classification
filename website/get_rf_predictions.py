@@ -1,11 +1,25 @@
 #toggle relevant models
-with open('../models_pkl/random_forest.pkl', 'rb') as fit_rf:
-    clf = pickle.load(fit_rf)
+# with open('../models_pkl/random_forest.pkl', 'rb') as fit_rf:
+#     clf = pickle.load(fit_rf)
 
-def predict_master_cat(upload_array):
-    predicted_category = clf.predict(upload_array)
-    probability = clf.predict_proba(upload_array)
-    arr = np.zeros(len(probability), 2)
+
+
+def predict_master_cat(upload_array, model_loc):
+    from tensorflow.keras.models import Sequential, load_model
+    import numpy as np
+   
+    model = load_model(model_loc)
+
+    predicted_category = model.predict(upload_array)
+    print(type(predicted_category))
+    probability = model.predict_proba(upload_array)
+    list_cat = []
+    list_prob = []
+
     for i in range(len(predicted_category)):
-        arr[i,:] = [predicted_category[i], probability[i,predicted_category]]
-    return arr
+        print(type(predicted_category[i]))
+        print(predicted_category[i].shape)
+        t = predicted_category[i]
+        list_cat.append(t)
+        list_prob.append(probability[i])
+    return (list_cat, list_prob)

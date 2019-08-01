@@ -1,6 +1,8 @@
 from werkzeug import secure_filename
 from flask import Flask, request, render_template
 import os, os.path
+from get_rf_predictions import predict_master_cat
+from preprocess_uploads import process_images
 #from config import Config
 #from flask_sqlalchemy import SQLAlchemy
 #from flask_migrate import Migrate
@@ -31,10 +33,26 @@ def uploader():
     uploaded_files = request.files.getlist("file[]")
     for f in uploaded_files:
         f.save(os.path.join(app.config['upload_folder'], secure_filename(f.filename)))
-    return render_template('account.html')
-		
+    return render_template('iam.html')
+
+def get_data():
+    X = process_images('image_uploads')
+    data = predict_master_cat(X, '../json/cnn-main.h5')
+    return data
+
+def write_json_file(filename, data):
+    try:
+        with open(filename, "w") as f:
+            f.writelines(data)
+        print(filename + " has been created.")
+    except Exception as e:
+        print(str(e))
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8800, debug=True)
+    filename = 'json_file.json'
+    data = get_data()
+    write_json_file(filename, data)
+    app.run(host='0.0.0.0', port=8880, debug=True)
 
 
 
