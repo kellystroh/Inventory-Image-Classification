@@ -1,6 +1,6 @@
 ### Streamlining Online Retail Inventory
 
-This project explores how machine learning can be utilized by online retailers with collections of inventory photos. This repo is a work in progress. All sections are currently in need of updated notes. Below, I'll keep lists of the sections that are ready for use, as well as the upcoming additions. 
+This project explores how machine learning can be utilized by online retailers with collections of inventory photos. This repo is a work in progress. All sections are currently in need of updated notes, and updated relative links because of organizational changes. Below, I'll keep lists of the sections that are ready for use, as well as the upcoming additions. 
 
 #### Dataset
 
