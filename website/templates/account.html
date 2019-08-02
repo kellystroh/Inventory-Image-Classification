@@ -83,7 +83,26 @@
         </div>
       </div>
     </div>  
+    <section class="site-section border-bottom bg-light" id="upload-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 text-center">
+            <h2 class="section-title mb-3">Update your Collection</h2>
+          </div>
+        </div>
+            <!-- <form action = "http://localhost:8087/uploader" method = "POST" 
+            enctype = "multipart/form-data">
+            <input type = "file" name = "file" />
+            <input type = "submit"/>
+            </form> -->
+            <form method="POST" enctype="multipart/form-data" action="/uploader">
+              <input type="file" name="file[]" multiple="">
+              <input type="submit" value="add">
+            </form>
 
+        </div>
+      </div>
+</section>
 
     <section class="site-section" id="inventory-section">
       <div class="container">
@@ -95,7 +114,7 @@
               <img src="static/images/8pic.jpg" alt="Image" class="img-fluid">
               <img src="static/images/7pic.jpg" alt="Image" class="img-fluid">
               <img src="static/images/4pic.jpg" alt="Image" class="img-fluid">
-              <img src="static/images/slide_4.jpg" alt="Image" class="img-fluid">
+              <!-- <img src="static/images/slide_4.jpg" alt="Image" class="img-fluid"> -->
             </div>
             <div class="custom-direction">
               <a href="#" class="custom-prev">Prev</a><a href="#" class="custom-next">Next</a>
@@ -115,29 +134,10 @@
       </div>
     </section>
 
-    <section class="site-section border-bottom bg-light" id="upload-section">
-            <div class="container">
-              <div class="row mb-5">
-                <div class="col-12 text-center">
-                  <h2 class="section-title mb-3">Update your Collection</h2>
-                </div>
-              </div>
-                  <!-- <form action = "http://localhost:8087/uploader" method = "POST" 
-                  enctype = "multipart/form-data">
-                  <input type = "file" name = "file" />
-                  <input type = "submit"/>
-                  </form> -->
-                  <form method="POST" enctype="multipart/form-data" action="/uploader">
-                    <input type="file" name="file[]" multiple="">
-                    <input type="submit" value="add">
-                  </form>
-      
-              </div>
-            </div>
-    </section>
 
 
-    <section class="site-section">
+
+    <!-- <section class="site-section">
       <div class="container">
         <div class="row mb-5">
           <div class="col-12">
@@ -157,7 +157,7 @@
                     <td>August</td>
                     <td>$1500</td>
                     <td>$100</td><!-- $150 changed to $100-->
-                    <td>$350</td>
+                    <!-- <td>$350</td>
                     <td>$100</td>
                     <td>$50</td>
                     </tr>
@@ -166,7 +166,7 @@
             </div>
             </div>
         </div>
-        </section>
+        </section> --> -->
 
 
 
