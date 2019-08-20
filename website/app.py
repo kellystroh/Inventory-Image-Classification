@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 
 app_root = os.path.dirname(os.path.abspath(__file__))
-upload_fold = '/tf/lec/website/image_uploads'
+upload_fold = '/tf/lec/Website/image_uploads'
 upload_folder = os.path.join(app_root, upload_fold)
 app.config['upload_folder'] = upload_folder
 
