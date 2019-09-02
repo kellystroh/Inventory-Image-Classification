@@ -1,30 +1,49 @@
 import numpy as np
 import pandas as pd
 import imageio
-import glob
-from zipfile import ZipFile 
 
 #my childhood soccer number
 np.random.seed(33)
 
-df = pd.read_csv('data/styles.csv', error_bad_lines=False)
+df = pd.read_csv('../data/styles.csv', error_bad_lines=False)
+
+'''
+
+After some exploration of the data, I determined that there are several 
+changes to the data that will improve the performance of our image classifier. 
+
+Most of the changes are related to the consistency of categories. 
+Example : 'Socks' is a sub-category under both Apparel and Accessories in original
+data, so I edited the 'masterCategory' column to combine these into one sub-category
+within the main category 'Apparel'.
+
+While a department store may have reason to have similar items in separate 
+departments, it is preferable for our purposes to have similar items grouped in 
+one category. 
+
+
+'''
 socks= list(df[df.subCategory=='Socks'].index)
 df.iloc[socks, 2] = 'Apparel'
 
-# make all of subCat-perfume within mastCat-PC and with subCat = Fragrance
+# Move all items within 'Perfume' sub-categories into Personal Care 
+# and set sub-category value to 'Fragrance'
 perfumes= list(df[df.subCategory=='Perfumes'].index)
 df.iloc[perfumes, 2] = 'Personal Care'
 df.iloc[perfumes, 3] = 'Fragrance'
 
-# make all of subCat-eyes to subCat-makeup
+# Combine the Personal Care sub-categories of 'Eyes' & 'Makeup' 
+# because the article types overlap
 eyes = list(df[df.subCategory=='Eyes'].index)
 df.iloc[eyes,3] = 'Makeup'
 
-# if article type is flip flop, subcat is flip flop
+# If the sub-category is 'Shoe' and the article type is flip flops, 
+# move item into the sub-category 'Flip Flops'
 flops = list(df[df.articleType=='Flip Flops'].index)
 df.iloc[eyes,3] = 'Flip Flops'
 
-# if article type is sandals, subcat is sandals
+# If the sub-category is 'Shoe' and the article type is sandals,
+# move item into the sub-category 'Sandals'
 sandals = (df[df.articleType=='Sandals'].index)
 df.iloc[eyes,3] = 'Sandals'
 
@@ -82,7 +101,7 @@ for i, ix in enumerate( df.id ):
     if i%2000==0:
         print(i, len(df))
 
-    fn = r'data/data/images/{}.jpg'.format(ix)
+    fn = r'../data/images/{}.jpg'.format(ix)
     try:
         img = imageio.imread(fn)
         if img.shape!=(80, 60, 3):
@@ -98,8 +117,8 @@ bw_img = bw_float64.astype('float16')
 '''
 Warning will appear because we are 'losing info' by converting from float64 to 
 float16... the higher degree of precision is not needed. 
-/Users/Kelly/anaconda3/lib/python3.7/site-packages/numpy/core/_methods.py:36: RuntimeWarning: overflow encountered in reduce
-  return umr_sum(a, axis, dtype, out, keepdims, initial)
+
+RuntimeWarning: overflow encountered in reduce return umr_sum(a, axis, dtype, out, keepdims, initial)
 '''
 #np.savez_compressed('data/original_image_arr.npz', a=all_img, b=bw_img)
 
@@ -159,9 +178,9 @@ all_img = np.delete(all_img, kid_idx, 0)
 print('df', df.shape)
 print('all', all_img.shape)
 print('bw', bw_img.shape)
-np.savez_compressed('data/full_image_arr.npz', a=all_img, b=bw_img)
+np.savez_compressed('../data/full_image_arr.npz', a=all_img, b=bw_img)
 print('full arr saved')
-df.to_csv('data/full_labels_df.csv', index=False)
+df.to_csv('../data/full_labels_df.csv', index=False)
 print('full df saved')
 
 ### test train split
@@ -171,8 +190,8 @@ X_bw = bw_img[shuffle]
 X_color = all_img[shuffle]
 y = df.iloc[shuffle,:]
 
-n_train = round(len(X_bw)*.79)
-n_val = round(len(X_bw)*.99)
+n_train = round(len(X_bw)*.75)
+n_val = round(len(X_bw)*.95)
 
 images_train_bw = X_bw[:n_train]
 images_train_color = X_color[:n_train]
@@ -184,24 +203,24 @@ images_test_color = X_color[n_train:n_val]
 labels_test = y[n_train:n_val]
 shuffle_test = shuffle[n_train:n_val]
 
-extra_images_bw = X_bw[n_val:]
-extra_images_color = X_color[n_val:]
-extra_labels = y[n_val:]
-extra_shuffle = shuffle[n_val:]
+images_val_bw = X_bw[n_val:]
+images_val_color = X_color[n_val:]
+labels_val = y[n_val:]
+shuffle_val = shuffle[n_val:]
 
 
 
-labels_train.to_csv('data/train_labels.csv', index=False)
+labels_train.to_csv('../data/train_labels.csv', index=False)
 print('train df saved')
-labels_test.to_csv('data/test_labels.csv', index=False)
+labels_test.to_csv('../data/test_labels.csv', index=False)
 print('test df saved')
-extra_labels.to_csv('data/extra_labels.csv', index=False)
+labels_val.to_csv('../data/val_labels.csv', index=False)
 print('final df saved')
 
 
-np.savez_compressed('data/shuffle_arrays.npz', a=shuffle_train, b=shuffle_test, c=extra_shuffle, d=shuffle)
+np.savez_compressed('../data/shuffle_arrays.npz', a=shuffle_train, b=shuffle_test, c=shuffle_val, d=shuffle)
 print('full array saved')
-np.savez_compressed('data/color_images.npz', a=images_train_color, b=images_test_color, c=extra_images_color)
+np.savez_compressed('../data/color_images.npz', a=images_train_color, b=images_test_color, c=images_val_color)
 print('color array saved')
-np.savez_compressed('data/bw_images.npz', a=images_train_bw, b=images_test_bw, c=extra_images_bw)
+np.savez_compressed('../data/bw_images.npz', a=images_train_bw, b=images_test_bw, c=images_val_bw)
 print('bw array saved')
