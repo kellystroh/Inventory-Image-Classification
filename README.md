@@ -15,11 +15,6 @@ Once decompressed, the data from Kaggle should appear as an image folder and a C
 After downloading the images and labels from Kaggle, you can use the file **load.py** to generate the datasets I used.
 
 
-
-
-
-
-
 Exploratory analysis began with dimension reduction and hierarchical clustering. For each of these approaches, I utilized the flattened, greyscale pixel values. Each image was represented by one row of 4,800 columns. I used PCA and t-SNE to reduce the image data to two dimensions, in order to visualize the differences between images. See Jupyter notebooks (PCA.ipynb & tsne.ipynb) for specifics. The hierarchical clustering component needs further exploration. Results suggested some recognition of main categories, but additional work is needed to identify image characteristics of the axes. 
 
 
