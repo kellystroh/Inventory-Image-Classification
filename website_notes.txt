@@ -1,0 +1,16 @@
+### IN TERMINAL (capstone directory)
+docker run --rm -it -p 8882:8888 -p 8883:8883 -v "$PWD":/tf/lec tensorflow/tensorflow:2.0.0a0-py3-jupyter
+
+### IN NEW TERMINAL WINDOW
+docker container ls
+### replace 'fa98a8552cb8' with new container ID
+docker exec -it fa98a8552cb8 bash
+
+### IN DOCKER BASH TERMINAL
+cd lec/Website
+pip install --upgrade pip
+pip install flask
+pip install pandas
+pip install pillow
+pip install scikit-image
+

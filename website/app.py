@@ -37,7 +37,7 @@ def uploader():
         f.save(os.path.join(app.config['upload_folder'], secure_filename(f.filename)))
     X = process_images('image_uploads')
     #df = pd.read_csv('../extra.csv')
-    data = predict_master_cat(X, '../json/cnn-main.h5')
+    data = predict_master_cat(X, '../Results/json/cnn-main.h5')
     #df.append(data)
     #df = df.iloc[:,1:]
     #print(type(data))
