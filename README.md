@@ -24,7 +24,8 @@ After downloading the images and labels from Kaggle, you can use the file **load
 Ready to run:
 * Process_Images
 * CNN_Classifier
-**Sample of Incorrectly Classified Images (text above shows the label predicted by model)
+
+**Sample of Incorrectly Classified Images (text above shows the label predicted by model)**
 <img src="Results/figures/wrong_main_row.png" width="750" />
 
 * Clustering
