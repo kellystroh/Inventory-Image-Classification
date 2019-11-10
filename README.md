@@ -4,7 +4,9 @@ This project explores how machine learning can be utilized by online retailers w
 
 #### Dataset
 I used a dataset published on Kaggle, with 44,000 product images (80 x 60 pixels). My time in Scotland tells me these images come from a British Department store, but this is simply a Scottish-educated guess. A corresponding table provided details about the item featured in each image, including a main category, sub-category, article type, and base color. 
-<img src="Results/figures/df_head.png" width="350" />
+
+<img src="Results/figures/df_head.png" width="500" />
+
 The data cleaning process involved removing groups with too few images and combining duplicate sub-categories. These steps narrowed the data to a mere 32,000 images. 
 
 #### How to run 
