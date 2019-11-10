@@ -9,6 +9,8 @@ I used a dataset published on Kaggle, with 44,000 product images (80 x 60 pixels
 
 The data cleaning process involved removing groups with too few images and combining duplicate sub-categories. These steps narrowed the data to a mere 32,000 images. 
 
+<img src="Results/figures/inventory_count.png" width="700" />
+
 #### How to run 
 The sub-directories largely function independent of the others and can be done in any order, **except** for these two steps.
 
