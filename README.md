@@ -25,6 +25,7 @@ Ready to run:
 * Process_Images
 * CNN_Classifier
 <img src="Results/figures/wrong_main_row.png" width="750" />
+
 **Sample of Incorrectly Classified Images (text above shows the label predicted by model)**
 
 * Clustering
